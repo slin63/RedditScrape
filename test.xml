@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I have a Flash project, and it has many source files. I have a fairly heavily-used class, call it Jenine. I recently (and, perhaps, callously) relocated Jenine from one namespace to another. I thought we were ready - I thought it was time. The new Jenine was better in every way - she had lost some code bloat, she had decoupled herself from a few vestigial class relationships, and she had finally come home to the namespace that she had always secretly known in her heart was the one she truly belonged to. She was among her own kind.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, Flash would have none of that. Perhaps it had formed an attachment. Perhaps it didn't &lt;em&gt;want&lt;/em&gt; Jenine to be decoupled. Either way, it clung to the old, perfect version of Jenine in its memory. It refused to move on. It ignored her (function) calls. It tried to forget her new, public interfaces. Instead, every instance of Jenine that it constructed was always a copy of the old version, down to its classpath:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var jenineInstance:Jenine = new Jenine();
+trace( getQualifiedClassName(jenineInstance));
+// Should print: com.newnamespace.subspace::Jenine
+// Prints: com.oldnamespace.subspace::Jenine
+// Ah, young love!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We fought. I'm not proud of some of the things I said or did. In the end, in a towering fit of rage, I deleted all references of Jenine completely. She was utterly, completely erased from the system. My cursor fell upon the "Empty Trash" menu option like the cold lid of a casket.&lt;/p&gt;
+
+&lt;p&gt;I don't think Flash ever recovered. To this day it still clings to the memory of Jenine. Her old, imperfect definitions still float through my project like abandoned ghosts. Whenever I force Flash to compile, it still lovingly inserts her into my movie, nestling her definition in amongst the other, living classes, like a small shrine. I wonder if they can see her.&lt;/p&gt;
+
+&lt;p&gt;Flash and I don't really talk anymore. I write my code, it compiles it. There's a new girl in town named Summer who looks almost identical to Jenine, as if someone had just copied her source-code wholesale into a new class, but Flash hasn't shown any interest. Most days it just mopes around and writes bad poetry in my comments when it thinks I'm not looking.&lt;/p&gt;
+
+&lt;p&gt;I hope no one else has had a similar experience, that this is just a singular, painful ripple in the horrifying dark lagoon that is the Flash code-base. If, by some fluke chance you have, or you have any idea how to erase whatever damn cache the compiler is using, please, please help.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2275</votes><tags><value>flash</value><value>caching</value><value>compiler-construction</value><value>flash-cs4</value></tags><link>http://stackoverflow.com/questions/2193953/flash-cs4-refuses-to-let-go</link><title>Flash CS4 refuses to let go</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Until today I thought that for example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;i += j;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;is just a shortcut for:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;i = i + j;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But what if we try this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int i = 5;
+long j = 8;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then &lt;code&gt;i = i + j;&lt;/code&gt; will not compile but &lt;code&gt;i += j;&lt;/code&gt; will compile fine.&lt;/p&gt;
+
+&lt;p&gt;Does it mean that in fact &lt;code&gt;i += j;&lt;/code&gt; is a shortcut for something like this
+&lt;code&gt;i = (type of i) (i + j)&lt;/code&gt;?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2249</votes><tags><value>java</value><value>casting</value><value>operators</value><value>variable-assignment</value><value>assignment-operator</value></tags><link>http://stackoverflow.com/questions/8710619/java-operator</link><title>Java += operator</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I need to check the &lt;code&gt;checked&lt;/code&gt; property of a checkbox and perform an action based on the checked property using &lt;a href="http://en.wikipedia.org/wiki/JQuery"&gt;jQuery&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, if the age checkbox is checked, then I need to show a textbox to enter age, else hide the textbox.&lt;/p&gt;
+
+&lt;p&gt;But the following code returns &lt;code&gt;false&lt;/code&gt; by default:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if($('#isAgeSelected').attr('checked')) {
+    $("#txtAge").show();
+} else {
+    $("#txtAge").hide();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;How do I successfully query the &lt;code&gt;checked&lt;/code&gt; property?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2245</votes><tags><value>javascript</value><value>jquery</value><value>checkbox</value></tags><link>http://stackoverflow.com/questions/901712/check-checkbox-checked-property</link><title>Check checkbox checked property</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Say I create an object as followed:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myJSONObject = {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What is the best way to remove the property &lt;code&gt;regex&lt;/code&gt; to end up with this new &lt;code&gt;myJSONObject&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myJSONObject = {"ircEvent": "PRIVMSG", "method": "newURI"};
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;</body><votes>2207</votes><tags><value>javascript</value><value>json</value></tags><link>http://stackoverflow.com/questions/208105/how-to-remove-a-property-from-a-javascript-object</link><title>How to remove a property from a JavaScript object</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I'd like to do something like this to tick a checkbox using jQuery:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(".myCheckBox").checked(true);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(".myCheckBox").selected(true);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Does such a thing exist?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2188</votes><tags><value>jquery</value><value>checkbox</value></tags><link>http://stackoverflow.com/questions/426258/checking-a-checkbox-with-jquery</link><title>Checking a checkbox with jQuery?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Here is a piece of &lt;strong&gt;C++&lt;/strong&gt; code that seems very peculiar. For some strange reason, sorting the data miraculously makes the code almost six times faster.&lt;/p&gt;
+
+&lt;pre class="lang-cpp prettyprint-override"&gt;&lt;code&gt;#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;ctime&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+int main()
+{
+    // Generate data
+    const unsigned arraySize = 32768;
+    int data[arraySize];
+
+    for (unsigned c = 0; c &amp;lt; arraySize; ++c)
+        data[c] = std::rand() % 256;
+
+    // !!! With this, the next loop runs faster
+    std::sort(data, data + arraySize);
+
+    // Test
+    clock_t start = clock();
+    long long sum = 0;
+
+    for (unsigned i = 0; i &amp;lt; 100000; ++i)
+    {
+        // Primary loop
+        for (unsigned c = 0; c &amp;lt; arraySize; ++c)
+        {
+            if (data[c] &amp;gt;= 128)
+                sum += data[c];
+        }
+    }
+
+    double elapsedTime = static_cast&amp;lt;double&amp;gt;(clock() - start) / CLOCKS_PER_SEC;
+
+    std::cout &amp;lt;&amp;lt; elapsedTime &amp;lt;&amp;lt; std::endl;
+    std::cout &amp;lt;&amp;lt; "sum = " &amp;lt;&amp;lt; sum &amp;lt;&amp;lt; std::endl;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Without &lt;code&gt;std::sort(data, data + arraySize);&lt;/code&gt;, the code runs in &lt;strong&gt;11.54&lt;/strong&gt; seconds.&lt;/li&gt;
+&lt;li&gt;With the sorted data, the code runs in &lt;strong&gt;1.93&lt;/strong&gt; seconds.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Initially, I thought this might be just a language or compiler anomaly. So I tried it in &lt;strong&gt;Java&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre class="lang-java prettyprint-override"&gt;&lt;code&gt;import java.util.Arrays;
+import java.util.Random;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        // Generate data
+        int arraySize = 32768;
+        int data[] = new int[arraySize];
+
+        Random rnd = new Random(0);
+        for (int c = 0; c &amp;lt; arraySize; ++c)
+            data[c] = rnd.nextInt() % 256;
+
+        // !!! With this, the next loop runs faster
+        Arrays.sort(data);
+
+        // Test
+        long start = System.nanoTime();
+        long sum = 0;
+
+        for (int i = 0; i &amp;lt; 100000; ++i)
+        {
+            // Primary loop
+            for (int c = 0; c &amp;lt; arraySize; ++c)
+            {
+                if (data[c] &amp;gt;= 128)
+                    sum += data[c];
+            }
+        }
+
+        System.out.println((System.nanoTime() - start) / 1000000000.0);
+        System.out.println("sum = " + sum);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With a somewhat similar, but less extreme result.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;My first thought was that sorting brings the data into the cache, but my next thought was how silly that is, because the array was just generated.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What is going on?&lt;/li&gt;
+&lt;li&gt;Why is a sorted array faster than an unsorted array?&lt;/li&gt;
+&lt;li&gt;The code is summing up some independent terms, and the order should not matter.&lt;/li&gt;
+&lt;/ul&gt;
+    &lt;/div&gt;</body><votes>12254</votes><tags><value>java</value><value>c++</value><value>performance</value><value>optimization</value><value>branch-prediction</value></tags><link>http://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-an-unsorted-array</link><title>Why is processing a sorted array faster than an unsorted array?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What is the difference between &lt;code&gt;INNER JOIN&lt;/code&gt; and &lt;code&gt;OUTER JOIN&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;How do &lt;code&gt;LEFT JOIN&lt;/code&gt;, &lt;code&gt;RIGHT JOIN&lt;/code&gt;, and &lt;code&gt;FULL JOIN&lt;/code&gt; fit in?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2288</votes><tags><value>sql</value><value>join</value><value>inner-join</value><value>outer-join</value></tags><link>http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins</link><title>Difference between INNER and OUTER joins</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;How do I force an overwrite of local files on a &lt;a href="http://en.wikipedia.org/wiki/Git_%28software%29"&gt;Git&lt;/a&gt; pull?&lt;/p&gt;
+
+&lt;p&gt;The scenario is following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A team member is modifying the templates for a website we are working on&lt;/li&gt;
+&lt;li&gt;They are adding some images to the images directory (but forgets to add them under source control)&lt;/li&gt;
+&lt;li&gt;They are sending the images by mail, later, to me&lt;/li&gt;
+&lt;li&gt;I'm adding the images under the source control and pushing them to Github together with other changes&lt;/li&gt;
+&lt;li&gt;They cannot pull updates from Github because git doesn't want to overwrite their files.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The errors I'm getting are:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How do I force Git to overwrite them? The person is a designer - usually I resolve all the conflicts by hand so the server has the most recent version that they just needs to update on their computer.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2282</votes><tags><value>git</value><value>version-control</value><value>overwrite</value><value>git-pull</value><value>git-fetch</value></tags><link>http://stackoverflow.com/questions/1125968/force-git-to-overwrite-local-files-on-pull</link><title>Force Git to overwrite local files on pull</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Is there something similar to &lt;code&gt;@import&lt;/code&gt; in CSS in JavaScript that allows you to include a JavaScript file inside another JavaScript file?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2226</votes><tags><value>javascript</value><value>file</value><value>import</value><value>include</value></tags><link>http://stackoverflow.com/questions/950087/include-a-javascript-file-in-another-javascript-file</link><title>Include a JavaScript file in another JavaScript file?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I am trying to checkout a remote branch:&lt;/p&gt;
+
+&lt;p&gt;Somebody pushed a branch called &lt;code&gt;test&lt;/code&gt; with &lt;code&gt;git push origin test&lt;/code&gt; to a shared repository. I can see the branch with &lt;code&gt;git branch -r&lt;/code&gt;. But how can I get this branch?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout test&lt;/code&gt; does nothing&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout origin/test&lt;/code&gt; does something, but &lt;code&gt;git branch&lt;/code&gt; says &lt;code&gt;* (no branch)&lt;/code&gt;. I am on no branch?&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;How do I share branches via a public repository?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2333</votes><tags><value>git</value><value>git-checkout</value><value>remote-branch</value></tags><link>http://stackoverflow.com/questions/1783405/checkout-remote-git-branch</link><title>Checkout remote Git branch</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I have a &lt;code&gt;master&lt;/code&gt; and a &lt;code&gt;development&lt;/code&gt; branch, both pushed to &lt;a href="http://en.wikipedia.org/wiki/GitHub"&gt;GitHub&lt;/a&gt;. I've &lt;code&gt;clone&lt;/code&gt;d, &lt;code&gt;pull&lt;/code&gt;ed, and &lt;code&gt;fetch&lt;/code&gt;ed, but I remain unable to get anything other than the &lt;code&gt;master&lt;/code&gt; branch back.&lt;/p&gt;
+
+&lt;p&gt;I'm sure I'm missing something obvious, but I have read the manual and I'm getting no joy at all.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2344</votes><tags><value>git</value><value>git-branch</value><value>git-clone</value><value>remote-branch</value></tags><link>http://stackoverflow.com/questions/67699/clone-all-remote-branches-with-git</link><title>Clone all remote branches with Git?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What is the most efficient way to clone a JavaScript object? I've seen &lt;code&gt;obj = eval(uneval(o));&lt;/code&gt; being used, but that's currently Firefox-only. In Mootools 1.2, I've done things like &lt;code&gt;obj = JSON.decode(JSON.encode(o));&lt;/code&gt; but question the efficiency.&lt;/p&gt;
+
+&lt;p&gt;I've also seen recursive copying functions with various flaws. I'm surprised no canonical solution exists.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2375</votes><tags><value>javascript</value><value>object</value><value>clone</value></tags><link>http://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-clone-an-object</link><title>What is the most efficient way to clone an object?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;According to the HTTP/1.1 Spec: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;strong&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/strong&gt; method is used to request that the origin server accept the entity enclosed in the request as a new subordinate of the resource identified by the &lt;code&gt;Request-URI&lt;/code&gt; in the &lt;code&gt;Request-Line&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In other words, &lt;code&gt;POST&lt;/code&gt; is used to &lt;strong&gt;create&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;strong&gt;&lt;code&gt;PUT&lt;/code&gt;&lt;/strong&gt; method requests that the enclosed entity be stored under the supplied &lt;code&gt;Request-URI&lt;/code&gt;. If the &lt;code&gt;Request-URI&lt;/code&gt; refers to an already existing resource, the enclosed entity SHOULD be considered as a modified version of the one residing on the origin server. If the &lt;code&gt;Request-URI&lt;/code&gt; does not point to an existing resource, and that URI is capable of being defined as a new resource by the requesting user agent, the origin server can create the resource with that URI."&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That is, &lt;code&gt;PUT&lt;/code&gt; is used to &lt;strong&gt;create or update&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, which one should be used to create a resource? Or one needs to support both?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2381</votes><tags><value>http</value><value>rest</value><value>post</value><value>put</value></tags><link>http://stackoverflow.com/questions/630453/put-vs-post-in-rest</link><title>PUT vs POST in REST</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What are metaclasses? What do you use them for?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2454</votes><tags><value>python</value><value>oop</value><value>metaclass</value><value>python-datamodel</value></tags><link>http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python</link><title>What is a metaclass in Python?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;The following are two methods of building a link that has the sole purpose of running JavaScript code. Which is better, in terms of functionality, page load speed, validation purposes, etc.?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;div class="snippet" data-lang="js" data-hide="false"&gt;
+&lt;div class="snippet-code"&gt;
+&lt;pre class="snippet-code-js lang-js prettyprint-override"&gt;&lt;code&gt;function myJsFunc() {
+  alert("myJsFunc");
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="snippet-code-html lang-html prettyprint-override"&gt;&lt;code&gt;&amp;lt;a href="#" onclick="myJsFunc();"&amp;gt;Run JavaScript Code&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;div class="snippet" data-lang="js" data-hide="false"&gt;
+&lt;div class="snippet-code"&gt;
+&lt;pre class="snippet-code-js lang-js prettyprint-override"&gt;&lt;code&gt;  function myJsFunc() {
+    alert("myJsFunc");
+  }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="snippet-code-html lang-html prettyprint-override"&gt;&lt;code&gt; &amp;lt;a href="javascript:void(0)" onclick="myJsFunc();"&amp;gt;Run JavaScript Code&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/div&gt;</body><votes>2434</votes><tags><value>javascript</value><value>html</value><value>performance</value><value>optimization</value><value>href</value></tags><link>http://stackoverflow.com/questions/134845/href-attribute-for-javascript-links-or-javascriptvoid0</link><title>Href attribute for JavaScript links: “#” or “javascript:void(0)”?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What is the maximum length of a URL in different browsers? Does it differ between browsers? &lt;/p&gt;
+
+&lt;p&gt;Does the HTTP protocol dictate it?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2472</votes><tags><value>http</value><value>url</value><value>browser</value><value>max</value><value>content-length</value></tags><link>http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers</link><title>What is the maximum length of a URL in different browsers?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;For anchors that act like buttons (for example, &lt;em&gt;Questions&lt;/em&gt;, &lt;em&gt;Tags&lt;/em&gt;, &lt;em&gt;Users&lt;/em&gt;, etc. at the top of the Stack Overflow page) or tabs, is there a CSS standard way to disable the highlighting effect if the user accidentally selects the text?&lt;/p&gt;
+
+&lt;p&gt;I realize this could be done with JavaScript, and a little googling yielded the Mozilla-only &lt;code&gt;-moz-user-select&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Is there a standard-compliant way to accomplish this with CSS, and if not, what is the "best practice" approach?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2506</votes><tags><value>css</value><value>cross-browser</value><value>highlighting</value><value>textselection</value></tags><link>http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting</link><title>CSS rule to disable text selection highlighting</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I always thought Java was &lt;strong&gt;pass-by-reference&lt;/strong&gt;; however I've seen a couple of blog posts (for example, &lt;a href="http://javadude.com/articles/passbyvalue.htm"&gt;this blog&lt;/a&gt;) that claim it's not. I do not think I understand the distinction they are making. &lt;/p&gt;
+
+&lt;p&gt;What is the explanation?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2529</votes><tags><value>java</value><value>parameter-passing</value><value>terminology</value><value>pass-by-reference</value><value>pass-by-value</value></tags><link>http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value</link><title>Is Java “pass-by-reference” or “pass-by-value”?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Is there a good way to explain how to resolve merge conflicts in Git?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2650</votes><tags><value>git</value><value>git-merge</value><value>merge-conflict-resolution</value><value>git-conflict-resolution</value></tags><link>http://stackoverflow.com/questions/161813/fix-merge-conflicts-in-git</link><title>Fix merge conflicts in Git?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;How do I revert from my current state to a snapshot made on a certain commit? &lt;/p&gt;
+
+&lt;p&gt;If I do &lt;code&gt;git log&lt;/code&gt;, I get the following output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git log
+commit a867b4af366350be2e7c21b8de9cc6504678a61b`
+Author: Me &amp;lt;me@me.com&amp;gt;
+Date:   Thu Nov 4 18:59:41 2010 -0400
+
+blah blah blah...
+
+commit 25eee4caef46ae64aa08e8ab3f988bc917ee1ce4
+Author: Me &amp;lt;me@me.com&amp;gt;
+Date:   Thu Nov 4 05:13:39 2010 -0400
+
+more blah blah blah...
+
+commit 0766c053c0ea2035e90f504928f8df3c9363b8bd
+Author: Me &amp;lt;me@me.com&amp;gt;
+Date:   Thu Nov 4 00:55:06 2010 -0400
+
+And yet more blah blah...
+
+commit 0d1d7fc32e5a947fbd92ee598033d85bfc445a50
+Author: Me &amp;lt;me@me.com&amp;gt;
+Date:   Wed Nov 3 23:56:08 2010 -0400
+
+Yep, more blah blah.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;How do revert to the commit from November 3, i.e. commit &lt;code&gt;0d1d7fc&lt;/code&gt;?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2669</votes><tags><value>git</value><value>git-reset</value><value>git-revert</value></tags><link>http://stackoverflow.com/questions/4114095/revert-to-a-previous-git-commit</link><title>Revert to a previous Git commit</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Yesterday I was pairing the socks from the clean laundry and figured out the way I was doing it is not very efficient. I was doing a naive search — picking one sock and "iterating" the pile in order to find its pair. This requires iterating over n/2 * n/4 = n&lt;sup&gt;2&lt;/sup&gt;/8 socks on average.&lt;/p&gt;
+
+&lt;p&gt;As a computer scientist I was thinking what I could do? Sorting (according to size/color/...) of course came to mind to achieve an O(NlogN) solution.&lt;/p&gt;
+
+&lt;p&gt;Hashing or other not-in-place solutions are not an option, because I am not able to duplicate my socks (though it could be nice if I could).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;So, the question is basically:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Given a pile of &lt;code&gt;n&lt;/code&gt; pairs of socks, containing &lt;code&gt;2n&lt;/code&gt; elements (assume each sock has exactly one matching pair), what is the best way to pair them up efficiently with up to logarithmic extra space? (I believe I can remember that amount of info if needed.)&lt;/p&gt;
+
+&lt;p&gt;I will appreciate an answer that addresses the following aspects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A general &lt;em&gt;theoretical&lt;/em&gt; solution for a huge number of socks.&lt;/li&gt;
+&lt;li&gt;The actual number of socks is not that large, I don't believe my spouse and I have more than 30 pairs. (And it is fairly easy to distinguish between my socks and hers; can this be used as well?)&lt;/li&gt;
+&lt;li&gt;Is it equivalent to the &lt;a href="http://en.wikipedia.org/wiki/Element_distinctness_problem"&gt;element distinctness problem&lt;/a&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+    &lt;/div&gt;</body><votes>2550</votes><tags><value>algorithm</value><value>sorting</value><value>language-agnostic</value><value>matching</value></tags><link>http://stackoverflow.com/questions/14415881/pair-socks-from-a-pile-efficiently</link><title>Pair socks from a pile efficiently?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Can I use comments inside a JSON file? If so, how?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2592</votes><tags><value>javascript</value><value>json</value></tags><link>http://stackoverflow.com/questions/244777/can-i-use-comments-inside-a-json-file</link><title>Can I use comments inside a JSON file?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What is the difference between the &lt;code&gt;px&lt;/code&gt;, &lt;code&gt;dip&lt;/code&gt;, &lt;code&gt;dp&lt;/code&gt; and &lt;code&gt;sp&lt;/code&gt; units in Android?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2825</votes><tags><value>android</value><value>units-of-measurement</value></tags><link>http://stackoverflow.com/questions/2025282/difference-between-px-dp-dip-and-sp-in-android</link><title>Difference between px, dp, dip and sp in Android?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Is there a plugin-less way of retrieving &lt;a href="http://en.wikipedia.org/wiki/Query_string"&gt;query string&lt;/a&gt; values via jQuery (or without)? &lt;/p&gt;
+
+&lt;p&gt;If so, how? If not, is there a plugin which can do so?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2707</votes><tags><value>javascript</value><value>url</value><value>plugins</value><value>query-string</value></tags><link>http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript</link><title>How can I get query string values in JavaScript?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;In C#, what is the difference between &lt;code&gt;String&lt;/code&gt; and &lt;code&gt;string&lt;/code&gt;? (&lt;em&gt;note the case&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string s = "Hello world!";
+String S = "Hello world!";
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What are the guidelines for the use of each? And what are the differences?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2730</votes><tags><value>c#</value><value>string</value></tags><link>http://stackoverflow.com/questions/7074/whats-the-difference-between-string-and-string</link><title>What's the difference between String and string?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;If user input is inserted without modification into an SQL query, then the application becomes vulnerable to &lt;a href="http://stackoverflow.com/a/332367/"&gt;SQL injection&lt;/a&gt;, like in the following example:&lt;/p&gt;
+
+&lt;pre class="lang-php prettyprint-override"&gt;&lt;code&gt;$unsafe_variable = $_POST['user_input']; 
+
+mysql_query("INSERT INTO `table` (`column`) VALUES ('$unsafe_variable')");
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That's because the user can input something like &lt;code&gt;value'); DROP TABLE table;--&lt;/code&gt;, and the query becomes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;INSERT INTO `table` (`column`) VALUES('value'); DROP TABLE table;--')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What can be done to prevent this from happening?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2790</votes><tags><value>php</value><value>mysql</value><value>sql</value><value>security</value><value>sql-injection</value></tags><link>http://stackoverflow.com/questions/60174/how-can-i-prevent-sql-injection-in-php</link><title>How can I prevent SQL-injection in PHP?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;How do you delete untracked local files from your current branch?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2842</votes><tags><value>git</value><value>branch</value><value>git-branch</value></tags><link>http://stackoverflow.com/questions/61212/how-do-i-remove-local-untracked-files-from-my-current-git-branch</link><title>How do I remove local (untracked) files from my current Git branch?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I'm using &lt;a href="http://en.wikipedia.org/wiki/JSLint"&gt;JSLint&lt;/a&gt; to go through JavaScript, and it's returning many suggestions to replace &lt;code&gt;==&lt;/code&gt; (two equals signs) with &lt;code&gt;===&lt;/code&gt; (three equals signs) when doing things like comparing &lt;code&gt;idSele_UNVEHtype.value.length == 0&lt;/code&gt; inside of an &lt;code&gt;if&lt;/code&gt; statement.&lt;/p&gt;
+
+&lt;p&gt;Is there a performance benefit to replacing &lt;code&gt;==&lt;/code&gt; with &lt;code&gt;===&lt;/code&gt;? &lt;/p&gt;
+
+&lt;p&gt;Any performance improvement would be welcomed as many comparison operators exist.&lt;/p&gt;
+
+&lt;p&gt;If no type conversion takes place, would there be a performance gain over &lt;code&gt;==&lt;/code&gt;?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3046</votes><tags><value>javascript</value><value>operators</value><value>equality</value><value>equality-operator</value><value>identity-operator</value></tags><link>http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons</link><title>Does it matter which equals operator (== vs ===) I use in JavaScript comparisons?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I do not want to rename a remote branch, as described in &lt;em&gt;&lt;a href="http://stackoverflow.com/questions/1526794/rename-master-branch-for-both-local-and-remote-git-repositories?answertab=votes#tab-top"&gt;Rename master branch for both local and remote Git repositories&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Instead, I want to use the simplest way to rename a local branch, which is not pushed to a remote branch.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2935</votes><tags><value>git</value><value>git-branch</value></tags><link>http://stackoverflow.com/questions/6591213/how-do-you-rename-the-local-branch</link><title>How do you rename the local branch?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What is a plain English explanation of Big O notation? I'd prefer as little formal definition as possible and simple mathematics.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>2998</votes><tags><value>algorithm</value><value>complexity-theory</value><value>computer-science</value><value>big-o</value><value>time-complexity</value></tags><link>http://stackoverflow.com/questions/487258/plain-english-explanation-of-big-o</link><title>Plain English explanation of Big O</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I've recently started maintaining someone else's JavaScript code. I'm fixing bugs, adding features and also trying to tidy up the code and make it more consistent.&lt;/p&gt;
+
+&lt;p&gt;The previous developer uses two ways of declaring functions and I can't work out if there is a reason behind it or not.&lt;/p&gt;
+
+&lt;p&gt;The two ways are:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var functionOne = function() {
+    // Some code
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+&lt;pre&gt;&lt;code&gt;function functionTwo() {
+    // Some code
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What are the reasons for using these two different methods and what are the pros and cons of each? Is there anything that can be done with one method that can't be done with the other?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3196</votes><tags><value>javascript</value><value>function</value><value>syntax</value><value>idioms</value></tags><link>http://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname</link><title>var functionName = function() {} vs function functionName() {}</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;h2&gt;Form-based authentication for websites&lt;/h2&gt;
+
+&lt;p&gt;We believe that Stack Overflow should not just be a resource for very specific technical questions, but also for general guidelines on how to solve variations on common problems. "Form based authentication for websites" should be a fine topic for such an experiment.&lt;/p&gt;
+
+&lt;h3&gt;It should include topics such as:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to log in&lt;/li&gt;
+&lt;li&gt;How to remain logged in&lt;/li&gt;
+&lt;li&gt;How to store passwords&lt;/li&gt;
+&lt;li&gt;Using secret questions&lt;/li&gt;
+&lt;li&gt;Forgotten username/password functionality&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://openid.net/"&gt;OpenID&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;"Remember me" checkbox&lt;/li&gt;
+&lt;li&gt;Browser autocompletion of usernames and passwords&lt;/li&gt;
+&lt;li&gt;Secret URLs (public &lt;a href="http://en.wikipedia.org/wiki/Form-based_authentication"&gt;URLs&lt;/a&gt; protected by digest)&lt;/li&gt;
+&lt;li&gt;Checking password strength&lt;/li&gt;
+&lt;li&gt;E-mail validation&lt;/li&gt;
+&lt;li&gt;and much more about &lt;a href="http://en.wikipedia.org/wiki/Form-based_authentication"&gt;form based authentication&lt;/a&gt; ...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;It should not include things like:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;roles and authorization&lt;/li&gt;
+&lt;li&gt;HTTP basic authentication&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Please help us by&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Suggesting subtopics&lt;/li&gt;
+&lt;li&gt;Submitting good articles about this subject&lt;/li&gt;
+&lt;li&gt;Editing the official answer&lt;/li&gt;
+&lt;/ol&gt;
+    &lt;/div&gt;</body><votes>3402</votes><tags><value>security</value><value>http</value><value>authentication</value><value>language-agnostic</value><value>article</value></tags><link>http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication</link><title>The definitive guide to form-based website authentication</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;How come certain random strings produce various colors when entered as background colors in HTML? For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;div class="snippet" data-lang="js" data-hide="false"&gt;
+&lt;div class="snippet-code"&gt;
+&lt;pre class="snippet-code-html lang-html prettyprint-override"&gt;&lt;code&gt;&amp;lt;body bgcolor="chucknorris"&amp;gt; test &amp;lt;/body&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;...produces a document with a &lt;strong&gt;red background&lt;/strong&gt; across all browsers and platforms.&lt;/p&gt;
+
+&lt;p&gt;Interestingly, while &lt;code&gt;chucknorri&lt;/code&gt; produces a red background as well, &lt;code&gt;chucknorr&lt;/code&gt; produces a yellow background.&lt;/p&gt;
+
+&lt;p&gt;What's going on here?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3044</votes><tags><value>html</value><value>background-color</value></tags><link>http://stackoverflow.com/questions/8318911/why-does-html-think-chucknorris-is-a-color</link><title>Why does HTML think “chucknorris” is a color?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;We have an employee whose last name is Null. Our employee lookup application is killed when that last name is used as the search term (which happens to be quite often now). The error received (thanks Fiddler!) is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;soapenv:Fault&amp;gt;
+   &amp;lt;faultcode&amp;gt;soapenv:Server.userException&amp;lt;/faultcode&amp;gt;
+   &amp;lt;faultstring&amp;gt;coldfusion.xml.rpc.CFCInvocationException: [coldfusion.runtime.MissingArgumentException : The SEARCHSTRING parameter to the getFacultyNames function is required but was not passed in.]&amp;lt;/faultstring&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cute, huh?&lt;/p&gt;
+
+&lt;p&gt;The parameter type is &lt;code&gt;string&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I am using:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WSDL (SOAP).&lt;/li&gt;
+&lt;li&gt;Flex 3.5&lt;/li&gt;
+&lt;li&gt;ActionScript 3&lt;/li&gt;
+&lt;li&gt;ColdFusion 8&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that the error DOES NOT occur when calling the webservice as an object from a ColdFusion page.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3509</votes><tags><value>flex</value><value>actionscript</value><value>soap</value><value>coldfusion</value><value>wsdl</value></tags><link>http://stackoverflow.com/questions/4456438/how-do-i-correctly-pass-the-string-null-an-employees-proper-surname-to-a-so</link><title>How do I correctly pass the string “Null” (an employee's proper surname) to a SOAP web service from ActionScript 3?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;How can I check if one string contains another substring in JavaScript? 
+Usually I would expect a &lt;code&gt;String.contains()&lt;/code&gt; method, but there doesn't seem to be one.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3639</votes><tags><value>javascript</value><value>string</value></tags><link>http://stackoverflow.com/questions/1789945/how-can-i-check-if-one-string-contains-another-substring</link><title>How can I check if one string contains another substring?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;If I run the following program, which parses two date strings referencing times one second apart and compares them:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static void main(String[] args) throws ParseException {
+    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+    String str3 = "1927-12-31 23:54:07";  
+    String str4 = "1927-12-31 23:54:08";  
+    Date sDt3 = sf.parse(str3);  
+    Date sDt4 = sf.parse(str4);  
+    long ld3 = sDt3.getTime() /1000;  
+    long ld4 = sDt4.getTime() /1000;
+    System.out.println(ld4-ld3);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;353
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Why is &lt;code&gt;ld4-ld3&lt;/code&gt; not &lt;code&gt;1&lt;/code&gt; (as I would expect from the one-second difference in the times), but &lt;code&gt;353&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;If I change the dates to times one second later:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;String str3 = "1927-12-31 23:54:08";  
+String str4 = "1927-12-31 23:54:09";  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then &lt;code&gt;ld4-ld3&lt;/code&gt; will be &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Java version:&lt;/p&gt;
+
+&lt;pre class="lang-none prettyprint-override"&gt;&lt;code&gt;java version "1.6.0_22"
+Java(TM) SE Runtime Environment (build 1.6.0_22-b04)
+Dynamic Code Evolution Client VM (build 0.2-b02-internal, 19.0-b04-internal, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Timezone(&lt;code&gt;TimeZone.getDefault()&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre class="lang-none prettyprint-override"&gt;&lt;code&gt;sun.util.calendar.ZoneInfo[id="Asia/Shanghai",
+offset=28800000,dstSavings=0,
+useDaylight=false,
+transitions=19,
+lastRule=null]
+
+Locale(Locale.getDefault()): zh_CN
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;</body><votes>3659</votes><tags><value>java</value><value>date</value><value>timezone</value></tags><link>http://stackoverflow.com/questions/6841333/why-is-subtracting-these-two-times-in-1927-giving-a-strange-result</link><title>Why is subtracting these two times (in 1927) giving a strange result?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;In jQuery, it is possible to toggle the visibility of an element, using the functions &lt;code&gt;.hide()&lt;/code&gt;, &lt;code&gt;.show()&lt;/code&gt; or &lt;code&gt;.toggle()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using jQuery, how would you test if an element is visible or hidden?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3850</votes><tags><value>javascript</value><value>jquery</value><value>visibility</value></tags><link>http://stackoverflow.com/questions/178325/checking-if-an-element-is-hidden</link><title>Checking if an element is hidden</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I mistakenly added files using the command &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I have not yet run git commit. Is there a way to undo this or remove these files from the commit?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3873</votes><tags><value>git</value><value>version-control</value><value>git-stage</value></tags><link>http://stackoverflow.com/questions/348170/undo-git-add-before-commit</link><title>Undo 'git add' before commit</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Recently, I ran some of my JavaScript code through Crockford's &lt;a href="http://www.jslint.com/"&gt;JSLint&lt;/a&gt;, and it gave the following error:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Problem at line 1 character 1: Missing "use strict" statement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Doing some searching, I realized that some people add &lt;code&gt;"use strict";&lt;/code&gt; into their JavaScript code. Once I added the statement, the error stopped appearing. Unfortunately, Google did not reveal much of the history behind this string statement. Certainly it must have something to do with how the JavaScript is interpreted by the browser, but I have no idea what the effect would be.&lt;/p&gt;
+
+&lt;p&gt;So what is &lt;code&gt;"use strict";&lt;/code&gt; all about, what does it imply, and is it still relevant?&lt;/p&gt;
+
+&lt;p&gt;Do any of the current browsers respond to the &lt;code&gt;"use strict";&lt;/code&gt; string or is it for future use?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3874</votes><tags><value>javascript</value><value>syntax</value><value>jslint</value><value>use-strict</value></tags><link>http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it</link><title>What does “use strict” do in JavaScript, and what is the reasoning behind it?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What is the use of the &lt;code&gt;yield&lt;/code&gt; keyword in Python? What does it do?&lt;/p&gt;
+
+&lt;p&gt;For example, I'm trying to understand this code&lt;sup&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def node._get_child_candidates(self, distance, min_dist, max_dist):
+    if self._leftchild and distance - max_dist &amp;lt; self._median:
+        yield self._leftchild
+    if self._rightchild and distance + max_dist &amp;gt;= self._median:
+        yield self._rightchild  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And this is the caller:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result, candidates = list(), [self]
+while candidates:
+    node = candidates.pop()
+    distance = node._get_dist(obj)
+    if distance &amp;lt;= max_dist and distance &amp;gt;= min_dist:
+        result.extend(node._values)
+    candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))
+return result
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What happens when the method &lt;code&gt;_get_child_candidates&lt;/code&gt; is called?
+A list is returned? A single element is returned? Is it called again? When will subsequent calls stop?&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;sub&gt;
+1. The code comes from Jochen Schulz (jrschulz), who made a great Python library for metric spaces. This is the link to the complete source: &lt;a href="http://well-adjusted.de/~jrschulz/mspace/"&gt;Module mspace&lt;/a&gt;.&lt;/sub&gt;&lt;/p&gt;
+    &lt;/div&gt;</body><votes>3946</votes><tags><value>python</value><value>iterator</value><value>generator</value><value>yield</value></tags><link>http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python</link><title>What does the yield keyword do in Python?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;How can I redirect the user from one page to another using jQuery?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>4177</votes><tags><value>javascript</value><value>jquery</value><value>redirect</value></tags><link>http://stackoverflow.com/questions/503093/how-can-i-make-a-redirect-page-using-jquery</link><title>How can I make a redirect page using jQuery?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Programming language books explain that value types are created on the stack, and reference types are created on the heap, without explaining what these two things are. I haven't read a clear explanation of this.  I understand what &lt;em&gt;a stack&lt;/em&gt; is, but where and what are they (physically in a real computer's memory)?  &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To what extent are they controlled by the OS or language runtime?&lt;/li&gt;
+&lt;li&gt;What is their scope?&lt;/li&gt;
+&lt;li&gt;What determines the size of each of them?&lt;/li&gt;
+&lt;li&gt;What makes one faster? &lt;/li&gt;
+&lt;/ul&gt;
+    &lt;/div&gt;</body><votes>4227</votes><tags><value>memory-management</value><value>language-agnostic</value><value>stack</value><value>heap</value></tags><link>http://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap</link><title>What and where are the stack and heap?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;This question attempts to collect the few pearls among the dozens of bad C++ books that are published every year.&lt;/p&gt;
+
+&lt;p&gt;Unlike many other programming languages, which are often picked up on the go from tutorials found on the Internet, few are able to quickly pick up C++ without studying a well-written C++ book. It is way too big and complex for doing this. In fact, it is so big and complex, that &lt;strong&gt;&lt;em&gt;there are very many very bad C++ books&lt;/em&gt;&lt;/strong&gt; out there. And we are not talking about bad style, but things like sporting &lt;em&gt;glaringly obvious factual errors&lt;/em&gt; and &lt;em&gt;promoting abysmally bad programming styles&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Please edit the accepted answer to provide &lt;strong&gt;quality books&lt;/strong&gt; and an approximate skill level — &lt;em&gt;preferably&lt;/em&gt; &lt;strong&gt;after&lt;/strong&gt; &lt;em&gt;discussing your addition in &lt;a href="http://chat.stackoverflow.com/rooms/10/loungec"&gt;the C++ chat room&lt;/a&gt;&lt;/em&gt;. (The regulars might mercilessly undo your work if they disagree with a recommendation.) Add a short blurb/description about each book that you have personally read/benefited from. Feel free to debate quality, headings, etc. Books that meet the criteria will be added to the list.  Books that have reviews by the Association of C and C++ Users (ACCU) have links to the review. &lt;/p&gt;
+
+&lt;p&gt;&lt;sub&gt;&lt;em&gt;Note: FAQs and other resources can be found in the &lt;a href="http://stackoverflow.com/tags/c%2b%2b/info"&gt;C++ tag info&lt;/a&gt; and under &lt;a href="/questions/tagged/c%2b%2b-faq" class="post-tag" title="show questions tagged 'c++-faq'" rel="tag"&gt;c++-faq&lt;/a&gt;. There is also a similar post for C: &lt;a href="http://stackoverflow.com/questions/562303/the-definitive-c-book-guide-and-list"&gt;The Definitive C Book Guide and List&lt;/a&gt;&lt;/em&gt;&lt;/sub&gt;&lt;/p&gt;
+    &lt;/div&gt;</body><votes>4269</votes><tags><value>c++-faq</value><value>c++</value><value>c++-faq</value></tags><link>http://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</link><title>The Definitive C++ Book Guide and List</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;After reading &lt;a href="http://groups.google.com/group/comp.lang.c++.moderated/msg/33f173780d58dd20"&gt;Hidden Features and Dark Corners of C++/STL&lt;/a&gt; on &lt;code&gt;comp.lang.c++.moderated&lt;/code&gt;, I was completely surprised that the following snippet compiled and worked in both Visual Studio 2008 and G++ 4.4.&lt;/p&gt;
+
+&lt;p&gt;Here's the code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+int main()
+{
+    int x = 10;
+    while (x --&amp;gt; 0) // x goes to 0
+    {
+        printf("%d ", x);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I'd assume this is C, since it works in GCC as well. Where is this defined in the standard, and where has it come from?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>4541</votes><tags><value>c++</value><value>c</value><value>operators</value><value>code-formatting</value><value>standards-compliance</value></tags><link>http://stackoverflow.com/questions/1642028/what-is-the-name-of-the-operator</link><title>What is the name of the “--&gt;” operator?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;Like the old &lt;a href="http://en.wikipedia.org/wiki/Albert_Einstein"&gt;Albert Einstein&lt;/a&gt; &lt;a href="http://www.searchquotes.com/quotation/If_you_can%27t_explain_it_to_a_six_year_old,_you_don%27t_understand_it_yourself./333069/"&gt;said&lt;/a&gt;: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If you can't explain it to a six-year-old, you really don't understand it yourself.  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Well, I tried to explain JavaScript closures to a 27-year-old friend and completely failed.&lt;/p&gt;
+
+&lt;p&gt;How would you explain it to someone with a knowledge of the concepts which make up closures (for example, functions, variables and the like), but does not understand closures themselves?&lt;/p&gt;
+
+&lt;p&gt;I have seen &lt;a href="http://en.wikipedia.org/wiki/Scheme_%28programming_language%29"&gt;the Scheme example&lt;/a&gt; given on Stack Overflow, and it did not help.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>4560</votes><tags><value>javascript</value><value>closures</value></tags><link>http://stackoverflow.com/questions/111102/how-do-javascript-closures-work</link><title>How do JavaScript closures work?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;What are the differences between &lt;code&gt;git pull&lt;/code&gt; and &lt;code&gt;git fetch&lt;/code&gt;?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>4991</votes><tags><value>git</value><value>git-pull</value><value>git-fetch</value></tags><link>http://stackoverflow.com/questions/292357/what-are-the-differences-between-git-pull-and-git-fetch</link><title>What are the differences between 'git pull' and 'git fetch'?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I've been messing around with &lt;a href="http://en.wikipedia.org/wiki/JSON"&gt;JSON&lt;/a&gt; for some time, just pushing it out as text and it hasn't hurt anybody (that I know of), but I'd like to start doing things properly.&lt;/p&gt;
+
+&lt;p&gt;I have seen &lt;em&gt;so&lt;/em&gt; many purported "standards" for the JSON content type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;application/json
+application/x-javascript
+text/javascript
+text/x-javascript
+text/x-json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But which is correct, or best? I gather that there are security and browser support issues varying between them.&lt;/p&gt;
+
+&lt;p&gt;I know there's a similar question, &lt;em&gt;&lt;a href="http://stackoverflow.com/questions/404470/what-mime-type-if-json-is-being-returned-by-a-rest-api"&gt;What MIME type if JSON is being returned by a REST API?&lt;/a&gt;&lt;/em&gt;, but I'd like a slightly more targeted answer.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>5832</votes><tags><value>json</value><value>content-type</value></tags><link>http://stackoverflow.com/questions/477816/what-is-the-correct-json-content-type</link><title>What is the correct JSON content type?</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I want to delete a branch both locally and on my remote project fork on &lt;em&gt;GitHub&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Successfully Deleted Local Branch&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git branch -D bugfix
+Deleted branch bugfix (was 2a14ef7).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; The uppercase &lt;code&gt;-D&lt;/code&gt; option is a shortcut for &lt;code&gt;--delete --force&lt;/code&gt;. If you want to delete a local branch that must be fully merged in its upstream branch, use &lt;code&gt;-d&lt;/code&gt; which is a shortcut for &lt;code&gt;--delete&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Failed Attempts to Delete Remote Branch&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git branch -d remotes/origin/bugfix
+error: branch 'remotes/origin/bugfix' not found.
+
+$ git branch -d origin/bugfix
+error: branch 'origin/bugfix' not found.
+
+$ git branch -rd origin/bugfix
+Deleted remote branch origin/bugfix (was 2a14ef7).
+
+$ git push
+Everything up-to-date
+
+$ git pull
+From github.com:gituser/gitproject
+* [new branch] bugfix -&amp;gt; origin/bugfix
+Already up-to-date.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What do I need to do differently to successfully delete the
+&lt;code&gt;remotes/origin/bugfix&lt;/code&gt; branch both locally and on GitHub?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>5852</votes><tags><value>git</value><value>github</value><value>git-branch</value><value>git-remote</value></tags><link>http://stackoverflow.com/questions/2003505/delete-a-git-branch-both-locally-and-remotely</link><title>Delete a Git branch both locally and remotely</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I wrote the wrong thing in a commit message.&lt;/p&gt;
+
+&lt;p&gt;How can I change the message? The commit has not been pushed yet.&lt;/p&gt;
+    &lt;/div&gt;</body><votes>7690</votes><tags><value>git</value><value>git-commit</value><value>git-rewrite-history</value><value>amend</value></tags><link>http://stackoverflow.com/questions/179123/edit-an-incorrect-commit-message-in-git</link><title>Edit an incorrect commit message in Git</title></item><item><body>&lt;div class="post-text" itemprop="text"&gt;
+
+&lt;p&gt;I committed a directory containing &lt;code&gt;.class&lt;/code&gt; files instead of a directory containing &lt;code&gt;.java&lt;/code&gt; files to &lt;a href="http://en.wikipedia.org/wiki/Git_%28software%29"&gt;Git&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;How can I undo this commit?&lt;/p&gt;
+    &lt;/div&gt;</body><votes>7855</votes><tags><value>git</value><value>version-control</value><value>git-svn</value><value>git-commit</value><value>git-reset</value></tags><link>http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit</link><title>How do you undo the last commit?</title></item></items>
