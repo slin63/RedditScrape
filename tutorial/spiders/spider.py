@@ -22,3 +22,5 @@ class DmozSpider(scrapy.Spider):
             item['desc'] = sel.xpath('text()').extract()
             yield item
             # print '{ TITLE = %s }\n{ URL = %s }\n{ DESC = %s }\n\n'%(title, url, desc)
+
+class redditSpider(scrapy.Spider.)
