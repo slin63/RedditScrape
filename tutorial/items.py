@@ -4,7 +4,6 @@
 #
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 
 
@@ -12,3 +11,16 @@ class DmozItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     desc = scrapy.Field()
+
+
+class RedditItem(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    votes = scrapy.Field()
+    author = scrapy.Field()
+
+class PicItem(scrapy.Item):
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
+    title = scrapy.Field()
+    url = scrapy.Field()
