@@ -1,3 +1,6 @@
+# Left off : implemented vulgar list generator and added build_list object to
+# the reddits crawler. Find a way to see if item['author'][0] contains elements from search_list
+
 # Idea... scraper to find men's clothes, small
 # Idea... scraper to cull images from /r/elitedangerous, best images each week compile them etc.
 #         scraper to detect frequency of "vulgar" usernames in certain subreddit front pages
@@ -12,7 +15,7 @@ from tutorial.items import PicItem, RedditItem
 from scrapy.http import Request
 
 from tutorial.items import DmozItem  # From directory.[file.py] import class
-
+from tutorial.spiders.vulgar import build_list
 
 class DmozSpider(Spider):
     name = "dmoz" # Name of the spider . . . must be unique
@@ -43,6 +46,8 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
         "https://www.reddit.com/r/elitedangerous",
     ]
 
+    search_list = build_list('vulgar')
+
     rules = [
         Rule(LinkExtractor(
             allow=['/r/EliteDangerous/\?count=\d*&after=\w*']),  # Looks for next page with RE
@@ -62,10 +67,12 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
             if url[0][0] == "/":
                 item['url'] = "https://www.reddit.com" + url[0]
             else:
-                item['url'] = url[0]
+                item['url'] = url
 
             item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
-            # item['votes'] = selector.xpath('.//div[@class="score unvoted"]/text()').extract()  # .// means:
-            item['votes'] = selector.css('div.score.unvoted::text').extract()                    # Under div.thing, all div elements
+            item['votes'] = selector.xpath('.//div[@class="score unvoted"]/text()').extract()  # .// means:
+            # item['votes'] = selector.css('div.score.unvoted::text').extract()                # Under div.thing, all div elements
+
+            print item['author'][0]
 
             yield item
