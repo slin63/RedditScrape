@@ -106,9 +106,7 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
             author = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
 
             if url[0][0] == "/":
-                item['url'] = "https://www.reddit.com" + url[0]
-            else:
-                item['url'] = url
+                url = "https://www.reddit.com" + url[0]
 
             yield assign_to_item(item, ['title', 'url', 'votes', 'author', 'text'], [title, url, votes, author, text])
 
