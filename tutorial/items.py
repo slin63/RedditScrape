@@ -13,14 +13,16 @@ class DmozItem(scrapy.Item):
     desc = scrapy.Field()
 
 
-class RedditItem(scrapy.Item):
+class RedditThread(scrapy.Item):
     title = scrapy.Field()
     url = scrapy.Field()
     votes = scrapy.Field()
     author = scrapy.Field()
+    text = scrapy.Field()
 
-class PicItem(scrapy.Item):
-    image_urls = scrapy.Field()
-    images = scrapy.Field()
-    title = scrapy.Field()
-    url = scrapy.Field()
+
+class RedditComment(scrapy.Item):
+    text = scrapy.Field()
+    hyperlink = scrapy.Field()
+    # votes = scrapy.Field()
+    # author = scrapy.Field()
