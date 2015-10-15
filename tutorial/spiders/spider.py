@@ -1,5 +1,6 @@
-# Left off : implemented vulgar list generator and added build_list object to
-# the reddits crawler. Find a way to see if item['author'][0] contains elements from search_list
+# Left off : Trim vulgar.txt so we get less false positives . . .
+# implement parsing comment sections / text posts
+# implement some way to analyze collected information / posts outside / inside of crawler
 
 # Idea... scraper to find men's clothes, small
 # Idea... scraper to cull images from /r/elitedangerous, best images each week compile them etc.
@@ -15,7 +16,7 @@ from tutorial.items import PicItem, RedditItem
 from scrapy.http import Request
 
 from tutorial.items import DmozItem  # From directory.[file.py] import class
-from tutorial.spiders.vulgar import build_list
+from tutorial.spiders.filters import build_list, search_list
 
 class DmozSpider(Spider):
     name = "dmoz" # Name of the spider . . . must be unique
@@ -43,14 +44,14 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
     name = "reddits"
     allowed_domains = ["reddit.com"]
     start_urls = [
-        "https://www.reddit.com/r/elitedangerous",
+        "https://www.reddit.com/r/AskReddit/",
     ]
 
-    search_list = build_list('vulgar')
+    # l = build_list('vulgar')
 
     rules = [
         Rule(LinkExtractor(
-            allow=['/r/EliteDangerous/\?count=\d*&after=\w*']),  # Looks for next page with RE
+            allow=['/r/AskReddit/\?count=\d*&after=\w*']),  # Looks for next page with RE
             callback='parse_item',  # What do I do with this? --- pass to self.parse_item
             follow=True),  # Tells spider to continue after callback
     ]
@@ -64,15 +65,16 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
 
             url = selector.xpath('a/@href').extract()
 
-            if url[0][0] == "/":
-                item['url'] = "https://www.reddit.com" + url[0]
-            else:
-                item['url'] = url
+            # if url[0][0] == "/":
+            #     item['url'] = "https://www.reddit.com" + url[0]
+            # else:
+            #     item['url'] = url
 
             item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
             item['votes'] = selector.xpath('.//div[@class="score unvoted"]/text()').extract()  # .// means:
             # item['votes'] = selector.css('div.score.unvoted::text').extract()                # Under div.thing, all div elements
 
-            print item['author'][0]
+            if search_list(item['author'][0], build_list('vulgar')):
+                print "{ DING! - AUTHOR = %s | POST = %s | VOTES = %s }" % (item['author'][0], item['title'][0], item['votes'][0])
 
             yield item
