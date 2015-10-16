@@ -9,11 +9,18 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tutorial'
+BOT_NAME = 'reddits'
 
 SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 
+MAX_DEPTH = 2
+
+# Format: {'directory.pipelineclass' : operating order (0 - 1000)}
+ITEM_PIPELINES = {
+        'tutorial.pipelines.RedditPipeline': 0,
+        'tutorial.pipelines.JsonWriterPipeline': 1,
+    }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'

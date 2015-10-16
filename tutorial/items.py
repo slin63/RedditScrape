@@ -4,25 +4,29 @@
 #
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
-import scrapy
+from scrapy import Item, Field
 
 
-class DmozItem(scrapy.Item):
-    title = scrapy.Field()
-    link = scrapy.Field()
-    desc = scrapy.Field()
+class DmozItem(Item):
+    title = Field()
+    link = Field()
+    desc = Field()
 
 
-class RedditThread(scrapy.Item):
-    title = scrapy.Field()
-    url = scrapy.Field()
-    votes = scrapy.Field()
-    author = scrapy.Field()
-    text = scrapy.Field()
+class RedditThread(Item):
+    title = Field()
+    url = Field()
+    votes = Field()
+    author = Field()
+    text = Field()
+    type = Field()
 
 
-class RedditComment(scrapy.Item):
-    text = scrapy.Field()
-    hyperlink = scrapy.Field()
-    # votes = scrapy.Field()
-    # author = scrapy.Field()
+class RedditComment(Item):
+    text = Field()
+    url = Field()
+    votes = Field()
+    author = Field()
+    type = Field()
+    hyperlink = Field()
+
