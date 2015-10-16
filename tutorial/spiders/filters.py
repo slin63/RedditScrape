@@ -1,3 +1,5 @@
+from json import load
+
 def build_list(file):
     """Creates a list given a file with elements separated by newlines."""
     list = []
@@ -6,6 +8,10 @@ def build_list(file):
         list.append(line[0:-1])
     return list
 
+# with open('ed.json') as data_file:
+#     data = load(data_file)
+#
+# print data
 
 def search_list(string, l):
     """Searches a list for a selected string. Returns true if the string is found, false otherwise"""
@@ -45,9 +51,21 @@ def merge_lists(text_list):
     """Concatenates all string elements within a list to form a single string."""
     new_string = ""
     for e in text_list:
-        new_string += (e + ' ')
+        new_string += (e + '\n')
     return [(new_string[0:-1])]  # [0:-1] to remove the extra whitespace at the end
+
+
+def clean_votes(vote_list):
+    """Removes 'point/points' from vote data."""
+    points = ''
+    for e in vote_list[0]:
+        try:
+            points += str(int(e))
+        except ValueError:
+            pass
+    return [points]
 
 
 def clean_textlist(text_list):
     return merge_lists(clean_newlines(text_list))
+

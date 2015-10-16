@@ -1,12 +1,12 @@
 # Left off : Trim vulgar.txt so we get less false positives . . .
 # implement parsing comment sections / text posts
 # implement some way to analyze collected information / posts outside / inside of crawler
-# Maybe just parse comment threads and get title/author/votes from there
+# Parse the .json or parse directly what we get here . . . .
+# Calculate average # net votes per post per word in the text etc fun stats
 
 # Idea... scraper to find men's clothes, small
 # Idea... scraper to cull images from /r/elitedangerous, best images each week compile them etc.
 #         scraper to detect frequency of "vulgar" usernames in certain subreddit front pages
-# Debug and figure out xpaths/css with shell
 
 
 from scrapy import Spider
@@ -15,8 +15,9 @@ from scrapy.linkextractors import LinkExtractor
 from tutorial.items import RedditThread, RedditComment
 from scrapy.http import Request
 
+
 from tutorial.items import DmozItem  # From directory.[file.py] import class
-from tutorial.spiders.filters import build_list, search_list, assign_to_item, clean_textlist
+from tutorial.spiders.filters import build_list, search_list
 
 class DmozSpider(Spider):
     name = "dmoz" # Name of the spider . . . must be unique
@@ -43,7 +44,7 @@ class DmozSpider(Spider):
 class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.html#scrapy.spiders.CrawlSpider
     name = "reddits"
     allowed_domains = ["reddit.com"]
-    current_subreddit = "EliteDangerous"  # Caps sensitive . . .
+    current_subreddit = "leagueoflegends"  # Caps sensitive . . .
     start_urls = [
         "https://www.reddit.com/r/" + current_subreddit,
     ]
@@ -56,10 +57,15 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
 
 
         Rule(LinkExtractor(
-            allow=['/r/' + current_subreddit + '/comments/[a-zA-Z0-9]{6}/[a-z_]*?/$'],),  # Looks for next page with RE
+            allow=['/r/' + current_subreddit + '/comments/[a-zA-Z0-9]{6}/[a-z_]*?/$'],),  # Goes to comment section
             callback='parse_comments',  # What do I do with this? --- pass to self.parse_page
             follow=False)
     ]
+
+    custom_settings = {
+        "BOT_NAME": 'redditscraper',
+        "DEPTH_LIMIT": 2,
+    }
 
     def parse_page(self, response):
         """Gets title, author, and net votes on posts on each reddit page.
@@ -71,11 +77,6 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
             item['title'] = selector.xpath('div/p/a[@class="title may-blank "]/text()').extract()
 
             url = selector.xpath('a/@href').extract()
-
-            # if url[0][0] == "/":
-            #     item['url'] = "https://www.reddit.com" + url[0]
-            # else:
-            #     item['url'] = url
 
             item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
             item['votes'] = selector.xpath('.//div[@class="score unvoted"]/text()').extract()
@@ -92,36 +93,34 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
         thread_selector = response.xpath('//div[@class="sitetable linklisting"]')
         comment_selector = response.xpath('//div[@class="commentarea"]//div[@class="entry unvoted"]')
 
-        count = 0
 
-        for selector in thread_selector:
+        for selector in thread_selector:  # Reads original post
             item = RedditThread()
-            title = selector.xpath('.//a[@class="title may-blank "]/text()').extract()
-            url = selector.xpath('.//a[@class="title may-blank "]/@href').extract()  # URL = link to .self or to content
+            item['title'] = selector.xpath('.//a[@class="title may-blank "]/text()').extract()
+            item['url'] = selector.xpath('.//a[@class="title may-blank "]/@href').extract()  # URL = link to .self or to content
+            item['text'] = selector.xpath('.//div[@class="md"]//text()').extract()  # Might not always be text/could return None
+            item['votes'] = selector.xpath('//div[@class="score unvoted"]/text()').extract()
+            item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
+            item['type'] = [u'THREAD']  #  [u'text'], u indicates "unicode" string
 
-            text = selector.xpath('.//div[@class="md"]//text()').extract()  # Might not always be text/could return None
-            text = clean_textlist(text)  # Processing to make the text look pretty
-
-            votes = selector.xpath('//div[@class="score unvoted"]/text()').extract()
-            author = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
-
-            if url[0][0] == "/":
-                url = "https://www.reddit.com" + url[0]
-
-            yield assign_to_item(item, ['title', 'url', 'votes', 'author', 'text'], [title, url, votes, author, text])
-
-        for selector in comment_selector:
-            item = RedditComment()
-            hyperlink = selector.xpath('.//li[@class="first"]/a/@href').extract()
-            text = selector.xpath('.//div[@class="md"]/p/text()').extract()
-            if hyperlink:
-                item['hyperlink'] = hyperlink  # Returns hyperlink to comment thread
-            if text:
-                item['text'] = clean_textlist(text)
-
-            count += 1
 
             yield item
 
-        # print "{COUNT = %i | THREAD = %s}" % (count, response.url)
+        for selector in comment_selector:  # Reads comments
+            item = RedditComment()
+            item['url'] = response.xpath('//div[@class="sitetable linklisting"]').xpath('.//a[@class="title may-blank "]/@href').extract()
+            item['text'] = selector.xpath('.//div[@class="md"]/p/text()').extract()
+            item['votes'] = selector.xpath('.//p/span[@class="score unvoted"]/text()').extract()
+            item['type'] = [u'COMMENT']  # [u'text'], u indicates "unicode" string
+            item['hyperlink'] = selector.xpath('.//li[@class="first"]/a/@href').extract()  # Links directly to comment
+
+            if item['url']:  # If there's no url, we scraped an invalid comment.
+                yield item
+
+
+
+
+
+
+
 
