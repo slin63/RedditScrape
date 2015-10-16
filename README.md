@@ -1,7 +1,5 @@
-#Scrapy-test
+#RedditBot
 
-To start a shell, you must go to the project’s top level directory and run:
+Scrapy based web crawler that sifts comments and posts, collecting text, author, vote, and content information.
 
-e.g.
-    $ scrapy shell "http://www.dmoz.org/Computers/Programming/Languages/Python/Books/"
-
+slin63@illinois.edu
