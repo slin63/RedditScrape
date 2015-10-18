@@ -18,8 +18,8 @@ MAX_DEPTH = 2
 
 # Format: {'directory.pipelineclass' : operating order (0 - 1000)}
 ITEM_PIPELINES = {
-        'tutorial.pipelines.RedditPipeline': 0,
-        'tutorial.pipelines.JsonWriterPipeline': 1,
+        'tutorial.pipelines.RedditPipeline': 000,
+        'tutorial.pipelines.JsonWriterPipeline': 100,
     }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

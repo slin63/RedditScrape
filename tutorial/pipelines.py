@@ -9,6 +9,14 @@ from tutorial.spiders.filters import clean_textlist, clean_votes
 from json import dumps
 from os import path
 
+file_path_threads = path.relpath("tutorial/spiders/output/threads.jl")  # Uses .os module to get relative paths to /output
+file_path_comments = path.relpath("tutorial/spiders/output/comments.jl")
+file_placeholder = path.relpath("tutorial/spiders/output/foo.jl")
+
+global file_path_threads
+global file_path_comments
+global file_placeholder
+
 class RedditPipeline(object):
     def process_item(self, item, spider):
         item['text'] = clean_textlist(item['text'])
@@ -19,25 +27,31 @@ class RedditPipeline(object):
 
         return item
 
+# New pipeline to separate statistically interesting threads/posts? ~return data through debug log
+
+
 class JsonWriterPipeline(object):
     def __init__(self):
-        # self.thread_file = open('threads.jl', 'ab')
-        # self.comment_file = open('comments.jl', 'ab')
-
-        file_path_threads = path.relpath("output/threads.jl")  # Uses .os module to get relative paths to /output
-        file_path_comments = path.relpath("output/comments.jl")
-
-        self.thread_file = open(file_path_threads, 'ab')       # Refers to generated paths above
-        self.comment_file = open(file_path_comments, 'ab')
+        self.thread_file = open(file_path_threads, 'wb')       # Refers to generated paths above
+        self.comment_file = open(file_path_comments, 'wb')
 
     def process_item(self, item, spider):
-
         if item['type'][0] == 'THREAD':
             line = dumps(dict(item)) + "\n"
             self.thread_file.write(line)
-
-        if item['type'][0] == 'COMMENT':
+        elif item['type'][0] == 'COMMENT':
             line = dumps(dict(item)) + "\n"
             self.comment_file.write(line)
+        return item
+
+
+class ContentSearchPipeline(object):  # Consider graphing results with matlab
+    def __init__(self):
+        self.file_placeholder = open(file_placeholder, 'wb')
+
+    def process_item(self, item, spider):
+        if int(item['votes'][0]) > 2000:
+            line = dumps(dict(item)) + "\n"
+            self.file_placeholder.write(line)
 
         return item

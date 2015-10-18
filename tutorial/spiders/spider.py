@@ -3,6 +3,7 @@
 # implement some way to analyze collected information / posts outside / inside of crawler
 # Parse the .json or parse directly what we get here . . . .
 # Calculate average # net votes per post per word in the text etc fun stats
+# Implement matlab graphing for stat collection pipeline
 
 # Idea... scraper to find men's clothes, small
 # Idea... scraper to cull images from /r/elitedangerous, best images each week compile them etc.
@@ -44,7 +45,7 @@ class DmozSpider(Spider):
 class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.html#scrapy.spiders.CrawlSpider
     name = "reddits"
     allowed_domains = ["reddit.com"]
-    current_subreddit = "leagueoflegends"  # Caps sensitive . . .
+    current_subreddit = "AskReddit"  # Caps sensitive . . .
     start_urls = [
         "https://www.reddit.com/r/" + current_subreddit,
     ]
@@ -93,28 +94,26 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
         thread_selector = response.xpath('//div[@class="sitetable linklisting"]')
         comment_selector = response.xpath('//div[@class="commentarea"]//div[@class="entry unvoted"]')
 
-
         for selector in thread_selector:  # Reads original post
             item = RedditThread()
+            item['type'] = [u'THREAD']  #  [u'text'], u indicates "unicode" string
             item['title'] = selector.xpath('.//a[@class="title may-blank "]/text()').extract()
             item['url'] = selector.xpath('.//a[@class="title may-blank "]/@href').extract()  # URL = link to .self or to content
             item['text'] = selector.xpath('.//div[@class="md"]//text()').extract()  # Might not always be text/could return None
             item['votes'] = selector.xpath('//div[@class="score unvoted"]/text()').extract()
             item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
-            item['type'] = [u'THREAD']  #  [u'text'], u indicates "unicode" string
-
 
             yield item
 
         for selector in comment_selector:  # Reads comments
             item = RedditComment()
+            item['type'] = [u'COMMENT']  # [u'text'], u indicates "unicode" string
             item['url'] = response.xpath('//div[@class="sitetable linklisting"]').xpath('.//a[@class="title may-blank "]/@href').extract()
             item['text'] = selector.xpath('.//div[@class="md"]/p/text()').extract()
             item['votes'] = selector.xpath('.//p/span[@class="score unvoted"]/text()').extract()
-            item['type'] = [u'COMMENT']  # [u'text'], u indicates "unicode" string
             item['hyperlink'] = selector.xpath('.//li[@class="first"]/a/@href').extract()  # Links directly to comment
 
-            if item['url']:  # If there's no url, we scraped an invalid comment.
+            if item['hyperlink']:  # If there's no hyperlink, we scraped an invalid comment.
                 yield item
 
 
