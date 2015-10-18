@@ -1,15 +1,18 @@
 # Parses json and collects interesting data
 
 import json
-from os import path, chroot
+import os
 
-chroot = ("tutoral/spiders")  # "ch.ange root"
-file_placeholder = path.relpath("output/foo.jl")
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+print fileDir
 
-def open_json(file):
-    open(file, 'r')
+def readFile(filename):
+    filehandle = open(filename)
+    for line in filehandle:
+        print line
+    # print filehandle.read()
+    filehandle.close()
 
-open_file = open(file_placeholder, 'rb')
-
-for line in open_file:
-    print line
+#For accessing the file in the parent folder of the current folder
+filename = os.path.join(fileDir, '../output/foo.jl')
+readFile(filename)
