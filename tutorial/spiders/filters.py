@@ -1,5 +1,3 @@
-from json import load
-
 def build_list(file):
     """Creates a list given a file with elements separated by newlines."""
     list = []
@@ -8,10 +6,6 @@ def build_list(file):
         list.append(line[0:-1])
     return list
 
-# with open('ed.json') as data_file:
-#     data = load(data_file)
-#
-# print data
 
 def search_list(string, l):
     """Searches a list for a selected string. Returns true if the string is found, false otherwise"""

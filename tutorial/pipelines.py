@@ -17,6 +17,7 @@ global file_path_threads
 global file_path_comments
 global file_placeholder
 
+
 class RedditPipeline(object):
     def process_item(self, item, spider):
         item['text'] = clean_textlist(item['text'])
@@ -26,8 +27,6 @@ class RedditPipeline(object):
             item['votes'] = clean_votes(item['votes'])
 
         return item
-
-# New pipeline to separate statistically interesting threads/posts? ~return data through debug log
 
 
 class JsonWriterPipeline(object):
