@@ -3,6 +3,7 @@
 import json
 import os
 from string import find
+import pprint
 
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 #For accessing the file in the parent folder of the current folder
@@ -67,5 +68,16 @@ def search_json_count(json_tup, target_key, search_words):
     return link_dict
 
 
-print search_json_count(json_tup=open_json(jsonfile), target_key='text', search_words=['upvote'])
+def find_stats(json_tup, target_key, search_words):
+    stat_dict = search_json_count(json_tup, target_key, search_words)
+    json_length = len(json_tup)
+    number_comments_hits= len(stat_dict)
+    number_of_hits = sum(stat_dict.values())
 
+    print "Total posts: %s\n%% of posts containing words in search_words: %s%%\nTotal number of hits: %s"% (json_length, ((100.0*number_comments_hits)/json_length), number_of_hits)
+
+    print [json_length, number_comments_hits, number_of_hits]
+
+# print search_json_count(json_tup=open_json(jsonfile), target_key='text', search_words=['upvote'])
+
+find_stats(json_tup=open_json(jsonfile), target_key='text', search_words=[' why ', ' how '])
