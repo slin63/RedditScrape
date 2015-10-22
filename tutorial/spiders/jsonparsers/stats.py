@@ -3,7 +3,6 @@
 import json
 import os
 from string import find
-import pprint
 
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 #For accessing the file in the parent folder of the current folder
@@ -42,42 +41,44 @@ def RepNSlice(st,index,key):
     return ''.join(l)
 
 
-def search_json_count(json_tup, target_key, search_words):
+def search_json_string(json_tup, target_key, search_words):  # This is really gross and needs to be changed or replaced
     """Given a tuple filled with json dicts, a key under which we will search, and
     a list of words to look for, returns a dict of form {url: # of instances of words}
     Note: When searching for short words like 'a' or 'he', put whitespaces around them
     e.g. ' a ', ' he ', so that portions of other words are not confused for the actual word."""
     link_dict = {}
     for jsons in json_tup:
-        if jsons[target_key]:
-            for word in search_words:  # Initializes dictionary entrances
-                count = search_string(jsons[target_key][0], word)
-                if count:
-                    try:
-                        link_dict[jsons['hyperlink'][0]] = 0
-                    except KeyError:
-                        link_dict[jsons['url'][0]] = 0
+        for word in search_words:  # Initializes dictionary entrances
+            count = search_string(jsons[target_key][0], word)
+            if count:
+                try:
+                    link_dict[jsons['hyperlink'][0]] = 0
+                except KeyError:
+                    link_dict[jsons['url'][0]] = 0
 
-            for word in search_words:  # Populates dictionary entrances with counts
-                count = search_string(jsons[target_key][0], word)
-                if count:
-                    try:
-                        link_dict[jsons['hyperlink'][0]] += count
-                    except KeyError:
-                        link_dict[jsons['url'][0]] += count
+        for word in search_words:  # Populates dictionary entrances with counts
+            count = search_string(jsons[target_key][0], word)
+            if count:
+                try:
+                    link_dict[jsons['hyperlink'][0]] += count
+                except KeyError:
+                    link_dict[jsons['url'][0]] += count
     return link_dict
 
 
 def find_stats(json_tup, target_key, search_words):
-    stat_dict = search_json_count(json_tup, target_key, search_words)
+    print "Scraping: %s \n" % jsonfile + "-" * 80
+    stat_dict = search_json_string(json_tup, target_key, search_words)
     json_length = len(json_tup)
     number_comments_hits= len(stat_dict)
     number_of_hits = sum(stat_dict.values())
 
-    print "Total posts: %s\n%% of posts containing words in search_words: %s%%\nTotal number of hits: %s"% (json_length, ((100.0*number_comments_hits)/json_length), number_of_hits)
+    print "Total posts: %s\n%% of posts containing words in search_words: %s%%\nTotal number of hits: %s"% (json_length, str((100.0*number_comments_hits)/json_length)[0:4], number_of_hits)
 
-    print [json_length, number_comments_hits, number_of_hits]
+    print stat_dict.keys()
 
-# print search_json_count(json_tup=open_json(jsonfile), target_key='text', search_words=['upvote'])
+    return 0
+    # print [json_length, number_comments_hits, number_of_hits]
 
-find_stats(json_tup=open_json(jsonfile), target_key='text', search_words=[' why ', ' how '])
+find_stats(json_tup=open_json(jsonfile), target_key='text', search_words=['a'])
+

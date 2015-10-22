@@ -22,6 +22,9 @@ ITEM_PIPELINES = {
         'tutorial.pipelines.JsonWriterPipeline': 100,
     }
 
+# Disable cookies (enabled by default)
+COOKIES_ENABLED=False
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
@@ -36,8 +39,6 @@ ITEM_PIPELINES = {
 #CONCURRENT_REQUESTS_PER_DOMAIN=16
 #CONCURRENT_REQUESTS_PER_IP=16
 
-# Disable cookies (enabled by default)
-#COOKIES_ENABLED=False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED=False
@@ -64,12 +65,6 @@ ITEM_PIPELINES = {
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
 #    'scrapy.telnet.TelnetConsole': None,
-#}
-
-# Configure item pipelines
-# See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tutorial.pipelines.SomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

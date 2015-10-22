@@ -9,13 +9,10 @@ from tutorial.spiders.filters import clean_textlist, clean_votes
 from json import dumps
 from os import path
 
+
 file_path_threads = path.relpath("tutorial/spiders/output/threads.jl")  # Uses .os module to get relative paths to /output
 file_path_comments = path.relpath("tutorial/spiders/output/comments.jl")
 file_placeholder = path.relpath("tutorial/spiders/output/foo.jl")
-
-global file_path_threads
-global file_path_comments
-global file_placeholder
 
 
 class RedditPipeline(object):
@@ -25,7 +22,6 @@ class RedditPipeline(object):
             item['url'][0] = "https://www.reddit.com" + item['url'][0]
         if item['votes']:
             item['votes'] = clean_votes(item['votes'])
-
         return item
 
 
@@ -52,5 +48,4 @@ class ContentSearchPipeline(object):  # Consider graphing results with matlab
         if int(item['votes'][0]) > 2000:
             line = dumps(dict(item)) + "\n"
             self.file_placeholder.write(line)
-
         return item

@@ -4,11 +4,14 @@
 # Parse the .json or parse directly what we get here . . . .
 # Calculate average # net votes per post per word in the text etc fun stats
 # Implement matlab graphing for stat collection pipeline
+# Launch from .py?
+# Only scrape very first page . . .
 
 # Idea... scraper to find men's clothes, small
 # Idea... scraper to cull images from /r/elitedangerous, best images each week compile them etc.
 #         scraper to detect frequency of "vulgar" usernames in certain subreddit front pages
 
+# cool: https://www.reddit.com/r/dataisbeautiful/comments/3pckdc/swear_words_per_minute_on_reddit_during_a_college/
 
 from scrapy import Spider
 from scrapy.spiders import CrawlSpider, Rule
@@ -44,28 +47,31 @@ class DmozSpider(Spider):
 
 class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.html#scrapy.spiders.CrawlSpider
     name = "reddits"
+
+    def __init__(self, current_subreddit='', *args, **kwargs):
+        super(redditSpider, self).__init__(*args, **kwargs)
+        self.start_urls = [
+            "https://www.reddit.com/r/" + current_subreddit,
+        ]
+
     allowed_domains = ["reddit.com"]
-    current_subreddit = "AskReddit"  # Caps sensitive . . .
-    start_urls = [
-        "https://www.reddit.com/r/" + current_subreddit,
-    ]
+    # current_subreddit = "AskReddit"  # Caps sensitive . . .
 
     rules = [
         Rule(LinkExtractor(
-            allow=['/r/' + current_subreddit + '/\?count=\d*&after=\w*']),  # Looks for next page with RE
+            allow=['/r/\w*/\?count=\d*&after=\w*']),  # Looks for next page with RE
             # callback='parse_page',  # Deprecated. . . now all handled inside comment thread
             follow=True),  # Tells spider to continue after callback
 
-
         Rule(LinkExtractor(
-            allow=['/r/' + current_subreddit + '/comments/[a-zA-Z0-9]{6}/[a-z_]*?/$'],),  # Goes to comment section
+            allow=['/r/\w*/comments/[a-zA-Z0-9]{6}/[a-z_]*?/$'],),  # Goes to comment section
             callback='parse_comments',  # What do I do with this? --- pass to self.parse_page
             follow=False)
     ]
 
     custom_settings = {
         "BOT_NAME": 'redditscraper',
-        "DEPTH_LIMIT": 2,
+        "DEPTH_LIMIT": 1,
     }
 
     def parse_page(self, response):
