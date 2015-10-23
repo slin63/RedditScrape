@@ -26,17 +26,16 @@ class RedditPipeline(object):
 
 
 class JsonWriterPipeline(object):
-    def __init__(self):
-        self.thread_file = open(file_path_threads, 'wb')       # Refers to generated paths above
-        self.comment_file = open(file_path_comments, 'wb')
-
     def process_item(self, item, spider):
+        thread_file = open(path.relpath("tutorial/spiders/output/th"+item['sub']+".jl"), 'ab')
+        comment_file = open(path.relpath("tutorial/spiders/output/co"+item['sub']+".jl"), 'ab')
+
         if item['type'][0] == 'THREAD':
             line = dumps(dict(item)) + "\n"
-            self.thread_file.write(line)
+            thread_file.write(line)
         elif item['type'][0] == 'COMMENT':
             line = dumps(dict(item)) + "\n"
-            self.comment_file.write(line)
+            comment_file.write(line)
         return item
 
 

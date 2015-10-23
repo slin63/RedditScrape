@@ -1,10 +1,10 @@
-def build_list(file):
+def build_list(openfile):
     """Creates a list given a file with elements separated by newlines."""
-    list = []
-    open_file = open(file, 'r')
+    l = []
+    open_file = open(openfile, 'r')
     for line in open_file.readlines():
-        list.append(line[0:-1])
-    return list
+        l.append(line[0:-1])
+    return l
 
 
 def search_list(string, l):

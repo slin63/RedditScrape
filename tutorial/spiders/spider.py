@@ -53,6 +53,7 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
         self.start_urls = [
             "https://www.reddit.com/r/" + current_subreddit,
         ]
+        self.subreddit = current_subreddit
 
     allowed_domains = ["reddit.com"]
     # current_subreddit = "AskReddit"  # Caps sensitive . . .
@@ -103,17 +104,20 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
         for selector in thread_selector:  # Reads original post
             item = RedditThread()
             item['type'] = [u'THREAD']  #  [u'text'], u indicates "unicode" string
+            item['sub'] = self.subreddit
             item['title'] = selector.xpath('.//a[@class="title may-blank "]/text()').extract()
             item['url'] = selector.xpath('.//a[@class="title may-blank "]/@href').extract()  # URL = link to .self or to content
             item['text'] = selector.xpath('.//div[@class="md"]//text()').extract()  # Might not always be text/could return None
             item['votes'] = selector.xpath('//div[@class="score unvoted"]/text()').extract()
             item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
 
+
             yield item
 
         for selector in comment_selector:  # Reads comments
             item = RedditComment()
             item['type'] = [u'COMMENT']  # [u'text'], u indicates "unicode" string
+            item['sub'] = self.subreddit
             item['url'] = response.xpath('//div[@class="sitetable linklisting"]').xpath('.//a[@class="title may-blank "]/@href').extract()
             item['text'] = selector.xpath('.//div[@class="md"]/p/text()').extract()
             item['votes'] = selector.xpath('.//p/span[@class="score unvoted"]/text()').extract()
@@ -121,11 +125,3 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
 
             if item['hyperlink']:  # If there's no hyperlink, we scraped an invalid comment.
                 yield item
-
-
-
-
-
-
-
-

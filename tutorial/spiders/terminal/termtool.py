@@ -1,1 +1,3 @@
-__author__ = 'sSDSD'
+import os
+os.system("cd ..")
+os.system("r")

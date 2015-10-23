@@ -80,5 +80,5 @@ def find_stats(json_tup, target_key, search_words):
     return 0
     # print [json_length, number_comments_hits, number_of_hits]
 
-find_stats(json_tup=open_json(jsonfile), target_key='text', search_words=['a'])
+find_stats(json_tup=open_json(jsonfile), target_key='text', search_words=['why'])
 

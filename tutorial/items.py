@@ -20,6 +20,7 @@ class RedditThread(Item):
     author = Field()
     text = Field()
     type = Field()
+    sub = Field()
 
 
 class RedditComment(Item):
@@ -29,4 +30,4 @@ class RedditComment(Item):
     author = Field()
     type = Field()
     hyperlink = Field()
-
+    sub = Field()
