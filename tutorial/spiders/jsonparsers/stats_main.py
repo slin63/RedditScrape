@@ -43,4 +43,4 @@ def stats_slave(json_tup, t, s):
     return json_length, number_comments_hits, number_of_hits
 
 
-print stats_master(json_list=jsondirectory, target_key=('text'), search_words=['league'])
+# print stats_master(json_list=jsondirectory, target_key=('text'), search_words=['league'])

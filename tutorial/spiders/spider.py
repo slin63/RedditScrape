@@ -23,6 +23,7 @@ from scrapy.http import Request
 from tutorial.items import DmozItem  # From directory.[file.py] import class
 from tutorial.spiders.filters import build_list, search_list
 
+
 class DmozSpider(Spider):
     name = "dmoz" # Name of the spider . . . must be unique
     allowed_domains = ["dmoz.org"]
@@ -110,7 +111,6 @@ class redditSpider(CrawlSpider):  # http://doc.scrapy.org/en/1.0/topics/spiders.
             item['text'] = selector.xpath('.//div[@class="md"]//text()').extract()  # Might not always be text/could return None
             item['votes'] = selector.xpath('//div[@class="score unvoted"]/text()').extract()
             item['author'] = selector.xpath('.//p[@class="tagline"]/a/text()').extract()
-
 
             yield item
 
