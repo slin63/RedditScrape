@@ -1,8 +1,9 @@
 # Contains main functions for parsing json data collected by Scrapy
-
+from time import localtime
 from statfunctions import *
+import os
+
 fileDir = os.path.dirname(os.path.realpath('__file__'))
-jsondirectory = os.listdir("../output")
 
 
 def stats_master(json_list, target_key, search_words):
@@ -10,21 +11,18 @@ def stats_master(json_list, target_key, search_words):
     and reads them using stats_slave. Returns dictionary with results for
     each individual subreddit and a tuple with sum results."""
     index = 0
-    posts = 0  # Total posts read
-    comment_hits = 0  # Individual text posts containing words
-    number_hits = 0  # Number of times words are mentioned total
     dic = {}
 
     for jsonfile in json_list:
         open_file = os.path.join(fileDir, '../output/' + jsonfile)
         results = stats_slave(json_tup=json_to_tuple(open_file), t=target_key, s=search_words)
-        posts += results[0]
-        comment_hits += results[1]
-        number_hits += results[2]
         dic[jsonfile] = (results[0], results[1], results[2])
         index += 1
 
-    return dic, (posts, comment_hits, number_hits)
+    t = localtime()
+    t_string = "%s/%s/%s %s:%s:%s" % (t[1], t[2], t[0], t[3], t[4], t[5])
+
+    return t_string, dic
 
 
 def stats_slave(json_tup, t, s):
@@ -36,11 +34,5 @@ def stats_slave(json_tup, t, s):
     number_comments_hits = len(stat_dict)
     number_of_hits = sum(stat_dict.values())
 
-    # print "Total posts: %s\n%% of posts containing words in search_words: %s%%\nTotal number of hits: %s"% (json_length, str((100.0*number_comments_hits)/json_length)[0:4], number_of_hits)
-
-    # print stat_dict.keys()
-
     return json_length, number_comments_hits, number_of_hits
 
-
-# print stats_master(json_list=jsondirectory, target_key=('text'), search_words=['league'])

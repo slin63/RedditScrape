@@ -1,17 +1,4 @@
-# Left off : Trim vulgar.txt so we get less false positives . . .
-# implement parsing comment sections / text posts
-# implement some way to analyze collected information / posts outside / inside of crawler
-# Parse the .json or parse directly what we get here . . . .
-# Calculate average # net votes per post per word in the text etc fun stats
 # Implement matlab graphing for stat collection pipeline
-# Launch from .py?
-# Only scrape very first page . . .
-
-# Idea... scraper to find men's clothes, small
-# Idea... scraper to cull images from /r/elitedangerous, best images each week compile them etc.
-#         scraper to detect frequency of "vulgar" usernames in certain subreddit front pages
-
-# cool: https://www.reddit.com/r/dataisbeautiful/comments/3pckdc/swear_words_per_minute_on_reddit_during_a_college/
 
 from scrapy import Spider
 from scrapy.spiders import CrawlSpider, Rule

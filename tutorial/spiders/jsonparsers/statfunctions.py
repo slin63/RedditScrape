@@ -1,6 +1,6 @@
 import json
-import os
 from string import find
+
 
 def json_to_tuple(filename):
     """Opens a file formatted in .json and indexes .json strings into an empty tuple.

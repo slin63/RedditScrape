@@ -1,10 +1,17 @@
-# Scrape multiple subreddits, plot data  ???
-import matplotlib.pyplot as plt
+import plotly.plotly as py
+import plotly.graph_objs as go
 
-plt.plot([(-2,1), (3,4), (5,6)])
-plt.ylabel('some numbers')
-plt.xlabel('bullshit')
-plt.show()
+py.sign_in('slin63', 'c3qo1fycv3')
 
-# r = set(['test','what'])
-# print set
+
+def plot(stats_dic):
+    data = [
+        go.Bar(
+            x=[key for key in stats_dic],
+            y=[count[2] for count in stats_dic.values()]
+        )
+    ]
+
+    py.plot(data, filename='reddit-bar')
+
+
