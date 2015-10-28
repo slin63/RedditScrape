@@ -44,5 +44,5 @@ def get_stats(target_key, search_words):
     return 0
 
 
-# run_spider(['dwarffortress'])
+# run_spider(['dwarffortress','AskReddit','leagueoflegends'])
 get_stats(target_key='text', search_words=['how', 'when', 'why', 'what'])
