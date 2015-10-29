@@ -36,7 +36,6 @@ def get_stats(target_key, search_words):
     logs = open(log, 'ab')
     line = dumps(stats) + "\n"
     logs.write(line)
-
     logs.close()
 
     plot(stats[1])
@@ -44,5 +43,5 @@ def get_stats(target_key, search_words):
     return 0
 
 
-# run_spider(['dwarffortress','AskReddit','leagueoflegends'])
-get_stats(target_key='text', search_words=['how', 'when', 'why', 'what'])
+# run_spider(['dwarffortress','uiuc','pathofexile','EliteDangerous','Funny','iama'])
+get_stats(target_key='text', search_words=['dog','dwarf','space','hate','chair','class','savings'])

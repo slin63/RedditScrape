@@ -27,8 +27,8 @@ class RedditPipeline(object):
 
 class JsonWriterPipeline(object):
     def process_item(self, item, spider):
-        thread_file = open(path.relpath("tutorial/spiders/output/th"+item['sub']+".jl"), 'ab')
-        comment_file = open(path.relpath("tutorial/spiders/output/co"+item['sub']+".jl"), 'ab')
+        thread_file = open(path.relpath("tutorial/spiders/output/"+item['sub']+"TH.jl"), 'ab')
+        comment_file = open(path.relpath("tutorial/spiders/output/"+item['sub']+"CO.jl"), 'ab')
 
         if item['type'][0] == 'THREAD':
             line = dumps(dict(item)) + "\n"
