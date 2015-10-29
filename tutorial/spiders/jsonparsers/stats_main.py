@@ -1,9 +1,6 @@
 # Contains main functions for parsing json data collected by Scrapy
 from time import localtime
 from statfunctions import *
-import os
-
-fileDir = os.path.dirname(os.path.realpath('__file__'))
 
 
 def stats_master(json_list, target_key, search_words):
@@ -35,4 +32,5 @@ def stats_slave(json_tup, t, s):
     number_of_hits = sum(stat_dict.values())
 
     return json_length, number_comments_hits, number_of_hits
+
 

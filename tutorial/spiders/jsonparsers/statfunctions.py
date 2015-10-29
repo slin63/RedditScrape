@@ -1,5 +1,8 @@
 import json
 from string import find
+import os
+
+fileDir = os.path.dirname(os.path.realpath('__file__'))
 
 
 def json_to_tuple(filename):
@@ -57,3 +60,4 @@ def search_json_string(json_tup, target_key, search_words):  # This is really gr
                 except KeyError:
                     link_dict[jsons['url'][0]] += count
     return link_dict
+

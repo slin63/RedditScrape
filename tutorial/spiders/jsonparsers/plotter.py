@@ -3,10 +3,6 @@ import plotly.graph_objs as go
 
 py.sign_in('slin63', 'c3qo1fycv3')
 
-stats_dic = {"thdwarffortress.jl": [25, 7, 10], "thAskReddit.jl": [27, 1, 3], "coleagueoflegends.jl": [3615, 780, 1077], "codwarffortress.jl": [421, 125, 167], "coAskReddit.jl": [4888, 1128, 1716], "thleagueoflegends.jl": [22, 7, 27]}
-c = {'copathofexile.jl': (1056, 42, 45), 'coleagueoflegends.jl': (2320, 30, 30), 'couiuc.jl': (800, 28, 41), 'codwarffortress.jl': (405, 43, 55), 'coAskReddit.jl': (4854, 199, 249), 'coaquariums.jl': (324, 18, 19)}
-t = {'thdwarffortress.jl': (24, 4, 5), 'thAskReddit.jl': (26, 0, 0), 'thpathofexile.jl': (24, 2, 2), 'thaquariums.jl': (25, 2, 3), 'thuiuc.jl': (25, 2, 3), 'thleagueoflegends.jl': (21, 3, 3)}
-
 
 def separate_stats(stats_dic):
     """Splits a dictionary containing thread and comment
@@ -17,9 +13,13 @@ def separate_stats(stats_dic):
     for e in stats_dic:
         # print e[-5], e
         if e[-5] == 'C':
-            comment_dic[e] = stats_dic[e]
+            comment_dic[e[0:-5]] = stats_dic[e]
         elif e[-5] == 'T':
-            thread_dic[e] = stats_dic[e]
+            thread_dic[e[0:-5]] = stats_dic[e]
+
+    print comment_dic
+    print thread_dic
+
 
     return comment_dic, thread_dic
 
@@ -32,20 +32,20 @@ def plot(stats_dic):  # Currently thread_dic and comment_dic are sorted differen
     thread_dic = (new_dic[1])
 
     data_comments = go.Bar(
-                x=[key for key in comment_dic],
-                y=[(float(count[1])/float(count[0])) for count in comment_dic.values()],  # Percent of posts containing word searches
+                x=['/r/'+key for key in comment_dic],
+                y=[(float(count[1])/float(count[0])) for count in comment_dic.values()],
                 name='Comments'
             )
     data_threads = go.Bar(
-                x=[key for key in comment_dic],
-                y=[(float(count[1])/float(count[0])) for count in thread_dic.values()],  # Percent of posts containing word searches
+                x=['/r/'+key for key in comment_dic],
+                y=[(float(count[1])/float(count[0])) for count in thread_dic.values()],
                 name='Threads'
             )
 
     data = [data_comments, data_threads]
 
     layout = go.Layout(
-        barmode='group',
+        barmode='stack',
         title='Percentage of posts containing keywords',
         xaxis=dict(
             title='Subreddit'
@@ -58,8 +58,4 @@ def plot(stats_dic):  # Currently thread_dic and comment_dic are sorted differen
     fig = go.Figure(data=data, layout=layout)
     py.plot(fig, filename='comment-bar')
 
-
     return 0
-
-# plot(stats_dic)
-

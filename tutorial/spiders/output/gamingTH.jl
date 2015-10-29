@@ -1,0 +1,22 @@
+{"votes": ["398"], "sub": "gaming", "author": ["ClassyLink"], "url": ["http://gfycat.com/PoliteScientificCaterpillar"], "text": [""], "title": ["I mean, there's a faster way around, Spartans"], "type": ["THREAD"]}
+{"votes": ["4957"], "sub": "gaming", "author": ["Harry101UK"], "url": ["http://gfycat.com/SereneRelievedImago"], "text": [""], "title": ["I'll just sprint through here....simple.... [Dark Souls]"], "type": ["THREAD"]}
+{"votes": [""], "sub": "gaming", "author": ["Sekrov"], "url": ["http://imgur.com/4xKU8FK"], "text": [""], "title": ["Target being a real GGG"], "type": ["THREAD"]}
+{"votes": ["143"], "sub": "gaming", "author": ["ARSLOCK"], "url": ["http://i.imgur.com/x0BO01Y.gifv"], "text": [""], "title": ["But Officer, It's Medicinal!"], "type": ["THREAD"]}
+{"votes": ["773"], "sub": "gaming", "author": ["Helleryoudoing"], "url": ["http://gfycat.com/SlimShockingGermanwirehairedpointer"], "text": [""], "title": ["This is how you win the highest fall challenge"], "type": ["THREAD"]}
+{"votes": ["80"], "sub": "gaming", "author": ["Born4Dying"], "url": ["http://imgur.com/7NXfLjM"], "text": [""], "title": ["This is Morpho, arriving shortly at LZ"], "type": ["THREAD"]}
+{"votes": ["60"], "sub": "gaming", "author": ["DoYouLikeFishsticks0"], "url": ["http://i.imgur.com/WRUIixj.jpg"], "text": [""], "title": ["Playing Vice City in the Hospital After Knee Surgery"], "type": ["THREAD"]}
+{"votes": ["73"], "sub": "gaming", "author": ["gamingmoderator"], "url": ["https://www.reddit.com/r/gaming/comments/3qai26/halloween_megathread/"], "text": ["Well, it's that time of year again.\nFeel free to post your gaming related cosplays, gaming related pumpkin carvings, etc; here."], "title": ["Halloween Megathread."], "type": ["THREAD"]}
+{"votes": ["243"], "sub": "gaming", "author": ["soupershitty"], "url": ["http://imgur.com/yP4JoLF"], "text": [""], "title": ["L.A Noire logic."], "type": ["THREAD"]}
+{"votes": ["130"], "sub": "gaming", "author": ["marcusmcdad"], "url": ["http://imgur.com/0Ap5ViD"], "text": [""], "title": ["Wife Drew this for Me"], "type": ["THREAD"]}
+{"votes": ["355"], "sub": "gaming", "author": ["alo81"], "url": ["http://gfycat.com/CleverDearestArabianhorse"], "text": [""], "title": ["Arkham Knight is back for sale on Steam. This is the performance Warner Brothers considers acceptable."], "type": ["THREAD"]}
+{"votes": ["271"], "sub": "gaming", "author": ["smellslikepurple233"], "url": ["http://i.imgur.com/XvyhmCD.png"], "text": [""], "title": ["Feels good guys. Feels real good [Halo]"], "type": ["THREAD"]}
+{"votes": ["763"], "sub": "gaming", "author": ["Qu1nlan"], "url": ["http://i.imgur.com/S7H2rES.jpg"], "text": [""], "title": ["me_irl [Undertale]"], "type": ["THREAD"]}
+{"votes": ["946"], "sub": "gaming", "author": ["WonderfulVasectomy"], "url": ["http://i.imgur.com/GRgN8is.gifv"], "text": [""], "title": ["Gotta have eyes at the back of your head"], "type": ["THREAD"]}
+{"votes": ["3615"], "sub": "gaming", "author": ["PartyAtGunpoint"], "url": ["http://i.imgur.com/S5UrRsA.jpg"], "text": [""], "title": ["Smashing"], "type": ["THREAD"]}
+{"votes": ["1003"], "sub": "gaming", "author": ["Xh0sa_NightMare"], "url": ["http://gfycat.com/GloomyElementaryBarnacle"], "text": [""], "title": ["Still Dre"], "type": ["THREAD"]}
+{"votes": ["3585"], "sub": "gaming", "author": ["Bor4o"], "url": ["http://gfycat.com/LastingVerifiableDragon"], "text": [""], "title": ["I didn't run over anybody this ti... DAMMIT!"], "type": ["THREAD"]}
+{"votes": ["3666"], "sub": "gaming", "author": ["windog"], "url": ["http://i.imgur.com/QXJIy7V.gifv"], "text": [""], "title": ["Cuz, this is th... the best money I've spent on Destiny"], "type": ["THREAD"]}
+{"votes": ["4649"], "sub": "gaming", "author": ["le-imp"], "url": ["http://imgur.com/aBOkgtl"], "text": [""], "title": ["Good Guy New World Interactive"], "type": ["THREAD"]}
+{"votes": ["948"], "sub": "gaming", "author": ["DrainSmith"], "url": ["http://i.imgur.com/n0aJRF4.png"], "text": [""], "title": ["They also updated the splash screen in the new Batman Arkham Knight update"], "type": ["THREAD"]}
+{"votes": ["2171"], "sub": "gaming", "author": ["mapguru"], "url": ["http://imgur.com/4C01nJH"], "text": [""], "title": ["Life's tough decisions..."], "type": ["THREAD"]}
+{"votes": ["1533"], "sub": "gaming", "author": ["CzornFlakes"], "url": ["http://imgur.com/J1zVyOD"], "text": [""], "title": ["My body may not be ready... but my controller is..."], "type": ["THREAD"]}
