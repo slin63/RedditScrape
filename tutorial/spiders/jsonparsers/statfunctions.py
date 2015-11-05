@@ -61,3 +61,18 @@ def search_json_string(json_tup, target_key, search_words):  # This is really gr
                     link_dict[jsons['url'][0]] += count
     return link_dict
 
+
+def separate_stats(stats_dic):  # Just use tuple pairs . . .
+    """Splits a dictionary containing thread and comment
+    info into two separate tuple-tuple combinations."""
+    comment_dic = ()
+    thread_dic = ()
+
+    for e in stats_dic:
+        # print e
+        if e[-5] == 'C':
+            comment_dic += ((e[0:-5], stats_dic[e]),)
+        elif e[-5] == 'T':
+            thread_dic += ((e[0:-5], stats_dic[e]),)
+
+    return sorted(comment_dic), sorted(thread_dic)

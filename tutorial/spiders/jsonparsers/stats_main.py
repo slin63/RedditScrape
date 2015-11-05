@@ -25,7 +25,6 @@ def stats_master(json_list, target_key, search_words):
 def stats_slave(json_tup, t, s):
     """Working component of stats_master, parses json files for
     interesting information and passes it off to stats_master."""
-    # print "Scraping: %s \n" % jsonfile + "-" * 80
     stat_dict = search_json_string(json_tup, t, s)
     json_length = len(json_tup)
     number_comments_hits = len(stat_dict)

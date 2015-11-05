@@ -1,5 +1,6 @@
 # Script that runs spiders in succession and statistics functions
 
+# Stat tool to graph average words per post, most commonly used words in subreddit, etc
 # maybe a tool to be able to graph previous scrapes in log.jl
 
 from time import sleep, time
@@ -7,6 +8,13 @@ from stats_main import *
 from plotter import *
 from json import dumps
 log = os.path.relpath("../log/log.jl")
+
+
+def main(scrape_list, target_key, search_words):
+    run_spider(scrape_list)
+    get_stats(target_key, search_words)
+
+    return 0
 
 
 def run_spider(scrape_list):
@@ -45,9 +53,13 @@ def get_stats(target_key, search_words):
     return 0
 
 
-tech_list = ['space','cars','phones','software','program','computer','screen','keyboard','code','wireless','gadget'\
-             'wifi','connection','release']
-random_list = ['dog','dwarf','space','hate','chair','class','savings','phone','technology']
+tech_list = [
+    'space','cars','phones','software','program','computer',
+    'screen','keyboard','code','wireless','gadget','wifi','connection','release'
+]
 
-# run_spider(['dwarffortress','gadgets','sports','gaming','pics','worldnews','news'])
-get_stats(target_key='text', search_words=tech_list)
+main(
+     scrape_list=['elitedangerous', 'uiuc', 'askreddit', 'askscience'],
+     target_key='text',
+     search_words=['fusarium', 'ships', 'combat', 'depression']
+)

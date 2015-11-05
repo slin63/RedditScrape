@@ -1,0 +1,4 @@
+tutorial/spiders/output/
+tutorial/spiders/log/
+*.pyc
+*.xml
