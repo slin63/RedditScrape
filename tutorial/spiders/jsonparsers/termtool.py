@@ -1,5 +1,6 @@
 # Script that runs spiders in succession and statistics functions
 
+# Need to fix dissociated x and y dics in plotter.py
 # maybe a tool to be able to graph previous scrapes in log.jl
 
 from time import sleep, time
@@ -40,14 +41,19 @@ def get_stats(target_key, search_words):
     logs.write(line)
     logs.close()
 
+    # separate_stats(stats[1])
+
     plot(stats[1])
 
     return 0
 
 
-tech_list = ['space','cars','phones','software','program','computer','screen','keyboard','code','wireless','gadget'\
-             'wifi','connection','release']
+tech_list = [
+    'space','cars','phones','software','program','computer',
+    'screen','keyboard','code','wireless','gadget','wifi','connection','release'
+]
+
 random_list = ['dog','dwarf','space','hate','chair','class','savings','phone','technology']
 
-# run_spider(['dwarffortress','gadgets','sports','gaming','pics','worldnews','news'])
+run_spider(['dwarffortress','askreddit','uiuc','philosophy','elitedangerous','learnpython','iama'])
 get_stats(target_key='text', search_words=tech_list)
