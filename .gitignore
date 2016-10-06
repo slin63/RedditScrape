@@ -1,4 +1,4 @@
-tutorial/spiders/output/
-tutorial/spiders/log/
+tutorial/spiders/output/*
+tutorial/spiders/log/*
 *.pyc
 *.xml
