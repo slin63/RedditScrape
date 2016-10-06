@@ -48,6 +48,8 @@ def get_stats(target_key, search_words):
     logs.write(line)
     logs.close()
 
+    # separate_stats(stats[1])
+
     plot(stats[1])
 
     return 0
